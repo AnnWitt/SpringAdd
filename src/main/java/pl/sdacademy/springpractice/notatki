@@ -36,3 +36,74 @@ bez ubijania, otwierania itd
 czy jestesmy w transakcji i kontynuje w istniejacej, jezeli nie ma to tworzy
 
 //wartwa webowa - Cointroller/restcontroles (controler + repsonsebody)
+
+ControllerAdvice
+
+thymeleaf *,#,$,@
+
+
+bazy dzielimy na
+embed - dzialaja w pamieci
+nieembed - musza miec serwer
+
+applicaitpn properst
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+konsola H2
+: H2 console available at '/h2'. Database available at 'jdbc:h2:mem:cb230539-203b-4c34-99bc-77cf4094a010
+http://localhost:8080/h2/login.jsp?jsessionid=4749313a6246bca04de5a74c274c5c9a
+localhost/h2
+i w jdbc costa, jdbc:h2:mem:cb230539-203b-4c34-99bc-77cf4094a010
+
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+spring.datasource.url=jdbc:h2:mem:stala
+//zamiast np jdbc:h2:mem:cb230539-203b-4c34-99bc-77cf4094a010
+i w przegladarce http://localhost:8080/h2
+
+303 -> rozszerzony 380 zbior adnotacji, validate
+jedna z nich hibernate Validator - nic wspolnego z bazami danych (to biblioteka)
+
+ctrl alt v zlapanie do zmiennej
+
+
+------------
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+spring.datasource.url=jdbc:h2:mem:stala
+
+variablea=v1
+
+
+w local1
+
+
+variablea=v2
+
+i jak uzcyc value z variable
+
+per profile - by variables albo beans
+
+
+
+Komunikacja miedzy servisami - user i haslo a nie chcmy trzymac ich w kodzie aplikacji
+ClientCredentials
+
+
+authorisation
+
+
+Using generated security password: 7d9d4f7c-8ec3-43d3-81e6-fedfb7ac4f1d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+w postmanie login i haslo
+
+
+security dl,a rerquestow webowych
+CSRF - localhost:8080/login
+dla resta nie ma sensu bo jest bezstanowy mozna nadpisac ceonfiguracje i robimy override czesci (podrecaznik)
+
+.csrf.disable moze uniemozliwosc zrobienie posta np
