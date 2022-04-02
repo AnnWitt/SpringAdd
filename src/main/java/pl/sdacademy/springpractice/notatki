@@ -1,0 +1,36 @@
+put / patch
+
+put - caly obiekt (typu json) musi pojsc {a,b,c}
+patch - mozna tylko zmieniane {b}
+
+Restcontroller - restowe api
+
+WebApplicationContekst - wszystkie controllery i restcontrollery
+
+RequestBody - json konw na obiekt javowy
+ResponseBody - dodatkowo opakuje w entity
+
+statusy http: 100, 200, 300, 400, 500
+100: zmiana komunikacji z http na ...
+200: poprawnia komunikacje/201 - created obiekt, 204 no content (ale poszlo ok), 202 akcepted
+300: przekierowania
+400: cos po stronie appki nie tak
+500: cos na serwerze nie tak
+
+restapi w wielowątkowosci - kilka portów otwartych (max liczbe wątków ustawiamy na tomcacie
+server.tomcat.threads.mac=200
+
+entityManager (to co create query, zapytania w Hql, musi z tego korzystac) / Session
+popbor encji o danym identyfikatorze - zestaw crud
+
+persist - zapisuje nowa wersje
+merge - nadpisuje
+
+repozytoria jpa  (interfejs)
+typy repozytoriów: crudy, pagowanie, jpa
+
+@Transactional - do ilosci sesji - rozszerzenie
+repo.save(...)
+repo.save(...)
+bez ubijania, otwierania itd
+czy jestesmy w transakcji i kontynuje w istniejacej, jezeli nie ma to tworzy
