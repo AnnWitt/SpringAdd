@@ -17,21 +17,35 @@ public class BookCrudService {
         //bookRepository.save(bookDto) //warstwa webowa, musimy zmapować na
         //np statyczne metody w warstwie modelowej lub serwisowej (mappery)
        Book savedBook= bookRepository.save(toBook(bookDto)); //save zwraca zapisana ksiazke
-
-        return null;
+        return toBookDto(savedBook);
     }
 
     public BookDto getBook(Long id) {
-        return null;
+       return bookRepository.findById(id) //optional, metoda map
+                .map(this::toBookDto) //szukamy po id, jak nie ma dtosa to zwraca wyjatek
+                .orElseThrow(()->new SdaException("Book with id " + id + " not four"));
+
     }
 
-    public BookDto update(BookDto bookDto) {
-        return null;
-    }
+    public BookDto updateBook(Long id,BookDto bookDto) {
+       return bookRepository.findById(id)
+                .map(book-> { //do osobnej metody bo wielolinijkowa
+                    book.setAuthor(bookDto.getAuthor());
+                    book.setIsbn(bookDto.getIsbn());
+                    book.setPages(bookDto.getPages());
+                    book.setTitle(bookDto.getTitle());
+                    return toBookDto(bookRepository.save(book)); //zwraca obiekt a my jeszcze musomy przemapowac
+                }).orElseThrow(()-> new SdaException("Book with id " + id + " not four"));
+               //consumer
+               // .ifPresentOrElse(); //co jesli optional jest pusty, tu bylby void
+    };
 
 
-    public BookDto deleteBook(Long id) {
-        return null;
+    public void deleteBook(Long id) {
+        bookRepository.deleteById(id);
+        //metoda identpotentna - przy podwojnym wywowalniu lub wiecej dostaniemy ten sam respons
+        //ktróre są - get tak, post nie, aktualizacja tak, delete tez
+
     }
 
     //mapper
@@ -47,7 +61,7 @@ public class BookCrudService {
 
     ; //dodac konstruktor bez tego pola bo ono idzie x hibernate
 
-    private BookDto toBook(Book book) { //w druga stornę
+    private BookDto toBookDto(Book book) { //w druga stornę
         return new BookDto(
                 book.getId(),
                 book.getIsbn(),

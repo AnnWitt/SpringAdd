@@ -32,13 +32,18 @@ public class Book {
     private String isbn;
     private String title;
     private String author;
-    private String pages;
+    private Integer pages;
     //jakby tu był enume to @enum erated dodac
 
 @CreationTimestamp
 private LocalDateTime creationDate;
 
-    public Book(Long id, String isbn, String title, String author, String pages) {
+    public Book(Long id, String isbn, String title, String author, Integer pages) {
+        this.id = id;
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
     }
 
 //tu powinien byc ten konstruktor do creationDAte z BookCrudService

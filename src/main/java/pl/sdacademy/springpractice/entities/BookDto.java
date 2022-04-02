@@ -16,7 +16,7 @@ public class BookDto {
     private String isbn;
     private String title;
     private String author;
-    private String pages;
+    private Integer pages;
 
 
 }

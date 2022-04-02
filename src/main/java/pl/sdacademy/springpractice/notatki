@@ -34,3 +34,5 @@ repo.save(...)
 repo.save(...)
 bez ubijania, otwierania itd
 czy jestesmy w transakcji i kontynuje w istniejacej, jezeli nie ma to tworzy
+
+//wartwa webowa - Cointroller/restcontroles (controler + repsonsebody)
